@@ -116,13 +116,15 @@ button:hover {
 
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 2;
 }
 
 ul li {
   margin: 0.5rem 0;
 }
-
+ul li:hover {
+  font-style: oblique;
+}
 ul li button {
   margin-left: 1rem;
 }
