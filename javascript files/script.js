@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Simulate login process
       if (username === "user" && password === "pass") {
         alert("Login successful!");
-        window.location.href = "dashboard.html";
+        window.location.href = "../html files/dashboard.html";
       } else {
         alert("Invalid username or password.");
       }
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Simulate signup process
       alert(`User ${username} signed up successfully!`);
-      window.location.href = "login.html";
+      window.location.href = "../html/login.html";
     });
   }
 
