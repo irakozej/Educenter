@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password").value;
 
       // Simulate login process
-      if (username === "admin" && password === "admin123") {
+      if (username === "admin@educenter.com" && password === "admin123") {
         alert("Login successful!");
         window.location.href = "../html files/admin-dashboard.html";
       } else {
