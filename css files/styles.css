@@ -27,7 +27,6 @@ nav ul li a {
   color: white;
   text-decoration: none;
 }
-
 main {
   padding: 1rem;
 }
@@ -124,6 +123,8 @@ ul li {
 }
 ul li:hover {
   font-style: oblique;
+  background-color:rgb(2, 116, 66);
+  border-radius: 4px;
 }
 ul li button {
   margin-left: 1rem;

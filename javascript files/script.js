@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const password = document.getElementById("password").value;
 
       // Simulate login process
-      if (username === "user" && password === "pass") {
+      if (username === "admin" && password === "admin123") {
         alert("Login successful!");
         window.location.href = "../html files/dashboard.html";
       } else {
@@ -27,9 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      // Simulate signup process
-      alert(`User ${username} signed up successfully!`);
-      window.location.href = "../html/login.html";
+      if(username === "" || password === "") {
+        alert("Please fill in all fields");
+      }
+
+        else{
+          alert(`User ${username} signed up successfully!`);
+          window.location.href = "../html/index.html";
+        }
     });
   }
 
