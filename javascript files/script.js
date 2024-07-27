@@ -25,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Simulate login process
       if (username === "admin@educenter.com" && password === "Admin@123") {
-        alert("Welcome admin! Login successfully!");
+        alert("Welcome Admin!");
         window.location.href = "../html files/admin-dashboard.html";
       } else {
-        alert(username + " welcome to the student dashboard");
+        alert("welcome " + username);
         window.location.href = "../html files/index.html";
       }
     });
@@ -149,11 +149,30 @@ document.addEventListener("DOMContentLoaded", () => {
     function addAssignment() {
       const title = prompt("Enter assignment title:");
       const dueDate = prompt("Enter due date (YYYY-MM-DD):");
+      const questions = [];
+
+      let addMoreQuestions = true;
+      while (addMoreQuestions) {
+        const questionText = prompt("Enter the question:");
+        const correctAnswer = prompt("Enter the correct answer:");
+        const wrongAnswer1 = prompt("Enter the first wrong answer:");
+        const wrongAnswer2 = prompt("Enter the second wrong answer:");
+        const wrongAnswer3 = prompt("Enter the third wrong answer:");
+
+        questions.push({
+          questionText,
+          correctAnswer,
+          wrongAnswers: [wrongAnswer1, wrongAnswer2, wrongAnswer3],
+        });
+
+        addMoreQuestions = confirm("Do you want to add another question?");
+      }
+
       if (title && dueDate) {
         const id = assignments.length
           ? assignments[assignments.length - 1].id + 1
           : 1;
-        assignments.push({ id, title, dueDate });
+        assignments.push({ id, title, dueDate, questions });
         saveAssignments();
         renderAssignments();
       }
@@ -189,9 +208,33 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderStudentAssignments() {
       studentAssignmentList.innerHTML = "";
       assignments.forEach((assignment) => {
-        const li = document.createElement("li");
-        li.textContent = `${assignment.title} - Due: ${assignment.dueDate}`;
-        studentAssignmentList.appendChild(li);
+        const assignmentItem = document.createElement("li");
+        assignmentItem.innerHTML = `<h3>${assignment.title} - Due: ${assignment.dueDate}</h3>`;
+
+        assignment.questions.forEach((question, questionIndex) => {
+          const questionElement = document.createElement("div");
+          questionElement.innerHTML = `<p>${question.questionText}</p>`;
+
+          const answers = [...question.wrongAnswers, question.correctAnswer];
+          answers.sort(() => Math.random() - 0.5);
+
+          answers.forEach((answer, answerIndex) => {
+            const answerButton = document.createElement("button");
+            answerButton.textContent = answer;
+            answerButton.onclick = () => {
+              if (answer === question.correctAnswer) {
+                answerButton.style.backgroundColor = "green";
+              } else {
+                answerButton.style.backgroundColor = "red";
+              }
+            };
+            questionElement.appendChild(answerButton);
+          });
+
+          assignmentItem.appendChild(questionElement);
+        });
+
+        studentAssignmentList.appendChild(assignmentItem);
       });
     }
 
