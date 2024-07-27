@@ -123,7 +123,6 @@ ul li {
 }
 ul li:hover {
   font-style: oblique;
-  background-color:rgb(2, 116, 66);
   border-radius: 4px;
 }
 ul li button {
@@ -131,4 +130,19 @@ ul li button {
 }
 h2 {
   text-align: center;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0.5rem 0;
+}
+
+button:hover {
+  background-color: #2fad35;
 }
