@@ -4,8 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileForm = document.getElementById("profileForm");
   const resourceList = document.getElementById("resourceList");
   const assignmentList = document.getElementById("assignmentList");
+  const studentAssignmentList = document.getElementById(
+    "studentAssignmentList"
+  );
   const addResourceBtn = document.getElementById("addResourceBtn");
   const addAssignmentBtn = document.getElementById("addAssignmentBtn");
+
+  // Load assignments from local storage
+  let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+
+  function saveAssignments() {
+    localStorage.setItem("assignments", JSON.stringify(assignments));
+  }
 
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
@@ -15,12 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Simulate login process
       if (username === "admin@educenter.com" && password === "Admin@123") {
-        alert(" Welcome Admin! You are logged in successfully!");
+        alert("Welcome admin! Login successfully!");
         window.location.href = "../html files/admin-dashboard.html";
       } else {
-        alert("Welcome " + username);
+        alert(username + " welcome to the student dashboard");
         window.location.href = "../html files/index.html";
-        
       }
     });
   }
@@ -115,13 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (assignmentList) {
-    // Dummy data for assignments
-    let assignments = [
-      { id: 1, title: "Assignment 1", dueDate: "2024-08-01" },
-      { id: 2, title: "Assignment 2", dueDate: "2024-08-15" },
-      { id: 3, title: "Assignment 3", dueDate: "2024-09-01" },
-    ];
-
     function renderAssignments() {
       assignmentList.innerHTML = "";
       assignments.forEach((assignment) => {
@@ -152,6 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ? assignments[assignments.length - 1].id + 1
           : 1;
         assignments.push({ id, title, dueDate });
+        saveAssignments();
         renderAssignments();
       }
     }
@@ -169,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (newTitle && newDueDate) {
           assignment.title = newTitle;
           assignment.dueDate = newDueDate;
+          saveAssignments();
           renderAssignments();
         }
       }
@@ -176,7 +180,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function deleteAssignment(id) {
       assignments = assignments.filter((a) => a.id !== id);
+      saveAssignments();
       renderAssignments();
     }
+  }
+
+  if (studentAssignmentList) {
+    function renderStudentAssignments() {
+      studentAssignmentList.innerHTML = "";
+      assignments.forEach((assignment) => {
+        const li = document.createElement("li");
+        li.textContent = `${assignment.title} - Due: ${assignment.dueDate}`;
+        studentAssignmentList.appendChild(li);
+      });
+    }
+
+    renderStudentAssignments();
   }
 });
