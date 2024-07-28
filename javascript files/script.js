@@ -10,8 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const readingsList = document.getElementById("readingsList");
   const addResourceBtn = document.getElementById("addResourceBtn");
   const addAssignmentBtn = document.getElementById("addAssignmentBtn");
+  const footer = document.querySelector("footer");
+  const nav = document.querySelector("nav");
 
-  // Load assignments from local storage
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop) {
+      nav.style.top = "-100px";
+      footer.style.display = "none";
+    } else {
+      nav.style.top = "0";
+      footer.style.display = "block";
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+
   let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
   let resources = JSON.parse(localStorage.getItem("resources")) || [];
   let grades = JSON.parse(localStorage.getItem("grades")) || {};
@@ -52,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
 
-      // Simulate signup process
       alert(`User ${username} signed up successfully!`);
       window.location.href = "login.html";
     });
@@ -64,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const username = document.getElementById("username").value;
       const email = document.getElementById("email").value;
 
-      // Simulate profile update
       alert(`Profile updated for ${username} with email ${email}`);
     });
   }
@@ -249,13 +262,11 @@ document.addEventListener("DOMContentLoaded", () => {
           answers.forEach((answer, answerIndex) => {
             const answerButton = document.createElement("button");
             answerButton.textContent = answer;
-            answerButton.onclick = () => {
-              if (answer === question.correctAnswer) {
-                answerButton.style.backgroundColor = "green";
-              } else {
-                answerButton.style.backgroundColor = "red";
-              }
-            };
+            answerButton.classList.add("answer-button");
+            answerButton.setAttribute(
+              "data-correct",
+              answer === question.correctAnswer
+            );
             questionElement.appendChild(answerButton);
           });
 
@@ -278,24 +289,38 @@ document.addEventListener("DOMContentLoaded", () => {
     renderStudentAssignments();
 
     function gradeAssignment(assignmentId) {
-      const assignment = assignments.find((a) => a.id === assignmentId);
-      if (assignment) {
-        let score = 0;
-        let totalQuestions = assignment.questions.length;
-        const assignmentElement =
-          studentAssignmentList.querySelectorAll("li")[
-            assignments.indexOf(assignment)
-          ];
+      const assignmentElement = Array.from(studentAssignmentList.children).find(
+        (li) => {
+          const header = li.querySelector("h3");
+          return (
+            header &&
+            header.textContent.includes(
+              assignments.find((a) => a.id === assignmentId).title
+            )
+          );
+        }
+      );
 
-        assignment.questions.forEach((question, questionIndex) => {
-          const buttons = assignmentElement
-            .querySelectorAll("div")
-            [questionIndex].querySelectorAll("button");
+      if (assignmentElement) {
+        const questionElements = Array.from(
+          assignmentElement.querySelectorAll("div")
+        );
+        let score = 0;
+        let totalQuestions = questionElements.length;
+
+        questionElements.forEach((questionElement) => {
+          const buttons = Array.from(
+            questionElement.querySelectorAll("button")
+          );
           buttons.forEach((button) => {
-            if (
-              button.style.backgroundColor === "green" &&
-              button.textContent === question.correctAnswer
-            ) {
+            button.disabled = true;
+            if (button.getAttribute("data-correct") === "true") {
+              button.style.backgroundColor = "green";
+            } else if (button.style.backgroundColor !== "green") {
+              button.style.backgroundColor = "red";
+            }
+
+            if (button.style.backgroundColor === "green") {
               score++;
             }
           });
