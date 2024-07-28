@@ -26,10 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
       // Simulate login process
       if (username === "admin@educenter.com" && password === "Admin@123") {
         alert("Welcome Admin!");
-        window.location.href = "../html files/admin-dashboard.html";
+        window.location.href =
+          "../html files/admin pannel/admin-dashboard.html";
       } else {
         alert("welcome " + username);
-        window.location.href = "../html files/index.html";
+        window.location.href = "../html files/student pannel/index.html";
       }
     });
   }
@@ -39,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-
+      alert("you are signed in as" + username);
       // Simulate signup process
       alert(`User ${username} signed up successfully!`);
       window.location.href = "login.html";
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email").value;
 
       // Simulate profile update
-      alert(`Profile updated for ${username} with email ${email}`);
+      alert(`Profile updated for ${username} with a new password`);
     });
   }
 

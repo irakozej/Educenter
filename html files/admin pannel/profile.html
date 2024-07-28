@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile - Centralized Educational Platform</title>
-    <link rel="stylesheet" href="../css files/styles.css" />
+    <link rel="stylesheet" href="../../css files/styles.css" />
   </head>
   <body>
     <header>
@@ -13,9 +13,9 @@
         <ul>
           <li><a href="admin-dashboard.html">Home</a></li>
           <li><a href="resources.html">Resources</a></li>
-          <li><a href="assignments.html">Assignments</a></li>
+          <li><a href="assessments.html">Assignments</a></li>
           <li><a href="profile.html">Profile</a></li>
-          <li><a href="login.html">Logout</a></li>
+          <li><a href="../login.html">Logout</a></li>
         </ul>
       </nav>
     </header>
@@ -23,24 +23,16 @@
       <section>
         <h2>User Profile</h2>
         <form id="profileForm">
-          <label for="username">Username:</label>
+          <label for="username">Username or Email:</label>
           <input
             type="text"
             id="username"
             name="username"
             required
-            readonly
-            placeholder="{admin}"
-          />
-          <label for="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            required
-            readonly
             placeholder="{admin@Educenter.com}"
           />
+          <label for="email">Password</label>
+          <input type="password" id="email" name="password" required />
           <button type="submit">Update Profile</button>
         </form>
       </section>
@@ -48,6 +40,6 @@
     <footer>
       <p>&copy; 2024 Centralized Educational Platform</p>
     </footer>
-    <script src="../javascript files/script.js"></script>
+    <script src="../../javascript files/script.js"></script>
   </body>
 </html>
