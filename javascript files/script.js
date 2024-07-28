@@ -7,14 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const studentAssignmentList = document.getElementById(
     "studentAssignmentList"
   );
+  const readingsList = document.getElementById("readingsList");
   const addResourceBtn = document.getElementById("addResourceBtn");
   const addAssignmentBtn = document.getElementById("addAssignmentBtn");
 
   // Load assignments from local storage
   let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
+  let resources = JSON.parse(localStorage.getItem("resources")) || [];
 
   function saveAssignments() {
     localStorage.setItem("assignments", JSON.stringify(assignments));
+  }
+
+  function saveResources() {
+    localStorage.setItem("resources", JSON.stringify(resources));
   }
 
   if (loginForm) {
@@ -40,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-      alert("you are signed in as" + username);
+
       // Simulate signup process
       alert(`User ${username} signed up successfully!`);
       window.location.href = "login.html";
@@ -54,18 +60,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email").value;
 
       // Simulate profile update
-      alert(`Profile updated for ${username} with a new password`);
+      alert(`Profile updated for ${username} with email ${email}`);
     });
   }
 
   if (resourceList) {
-    // Dummy data for resources
-    let resources = [
-      { id: 1, title: "Resource 1", link: "#" },
-      { id: 2, title: "Resource 2", link: "#" },
-      { id: 3, title: "Resource 3", link: "#" },
-    ];
-
     function renderResources() {
       resourceList.innerHTML = "";
       resources.forEach((resource) => {
@@ -99,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
           ? resources[resources.length - 1].id + 1
           : 1;
         resources.push({ id, title, link });
+        saveResources();
         renderResources();
+        renderReadings();
       }
     }
 
@@ -113,15 +114,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if (newTitle && newLink) {
           resource.title = newTitle;
           resource.link = newLink;
+          saveResources();
           renderResources();
+          renderReadings();
         }
       }
     }
 
     function deleteResource(id) {
       resources = resources.filter((r) => r.id !== id);
+      saveResources();
       renderResources();
+      renderReadings();
     }
+  }
+
+  if (readingsList) {
+    function renderReadings() {
+      readingsList.innerHTML = "";
+      resources.forEach((resource) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = resource.link;
+        a.textContent = resource.title;
+        li.appendChild(a);
+
+        readingsList.appendChild(li);
+      });
+    }
+
+    renderReadings();
   }
 
   if (assignmentList) {
