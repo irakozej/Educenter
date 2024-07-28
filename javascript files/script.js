@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load assignments from local storage
   let assignments = JSON.parse(localStorage.getItem("assignments")) || [];
   let resources = JSON.parse(localStorage.getItem("resources")) || [];
+  let grades = JSON.parse(localStorage.getItem("grades")) || {};
 
   function saveAssignments() {
     localStorage.setItem("assignments", JSON.stringify(assignments));
@@ -21,6 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function saveResources() {
     localStorage.setItem("resources", JSON.stringify(resources));
+  }
+
+  function saveGrades() {
+    localStorage.setItem("grades", JSON.stringify(grades));
   }
 
   if (loginForm) {
@@ -257,10 +262,57 @@ document.addEventListener("DOMContentLoaded", () => {
           assignmentItem.appendChild(questionElement);
         });
 
+        const submitBtn = document.createElement("button");
+        submitBtn.textContent = "Submit";
+        submitBtn.onclick = () => gradeAssignment(assignment.id);
+        assignmentItem.appendChild(submitBtn);
+
+        const gradeDisplay = document.createElement("div");
+        gradeDisplay.className = "gradeDisplay";
+        assignmentItem.appendChild(gradeDisplay);
+
         studentAssignmentList.appendChild(assignmentItem);
       });
     }
 
     renderStudentAssignments();
+
+    function gradeAssignment(assignmentId) {
+      const assignment = assignments.find((a) => a.id === assignmentId);
+      if (assignment) {
+        let score = 0;
+        let totalQuestions = assignment.questions.length;
+        const assignmentElement =
+          studentAssignmentList.querySelectorAll("li")[
+            assignments.indexOf(assignment)
+          ];
+
+        assignment.questions.forEach((question, questionIndex) => {
+          const buttons = assignmentElement
+            .querySelectorAll("div")
+            [questionIndex].querySelectorAll("button");
+          buttons.forEach((button) => {
+            if (
+              button.style.backgroundColor === "green" &&
+              button.textContent === question.correctAnswer
+            ) {
+              score++;
+            }
+          });
+        });
+
+        const grade = (score / totalQuestions) * 100;
+        const gradeDisplay = assignmentElement.querySelector(".gradeDisplay");
+        gradeDisplay.textContent = `Grade: ${score}/${totalQuestions} (${grade.toFixed(
+          2
+        )}%)`;
+
+        if (!grades[assignmentId]) {
+          grades[assignmentId] = [];
+        }
+        grades[assignmentId].push({ score, totalQuestions, grade });
+        saveGrades();
+      }
+    }
   }
 });
