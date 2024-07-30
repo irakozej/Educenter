@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up - Centralized Educational Platform</title>
     <link rel="stylesheet" href="../css files/styles.css" />
+    <title>Signup</title>
   </head>
   <body>
     <header>
@@ -12,67 +12,43 @@
       <nav>
         <ul>
           <li><a href="landing-page.html">Home</a></li>
+
           <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-      <section>
-        <h2>Sign Up</h2>
-        <form id="signupForm">
-          <label for="username">First Name:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            required
-            placeholder="Enter your First Name"
-          />
-          <div class="form-group">
-            <label for="firstName">Last Name:</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              required
-              placeholder="Enter your Last Name"
-            />
-          </div>
-          <div class="form-group">
-            <label for="firstName">Email:</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              required
-              placeholder="Enter Your Email"
-            />
-          </div>
+    <div class="signup-container">
+      <h2>Signup</h2>
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required />
+        </div>
+        <div class="form-group">
           <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
           <input
             type="password"
-            id="password"
-            name="password"
+            id="confirmPassword"
+            name="confirmPassword"
             required
-            placeholder="Enter a password"
           />
-          <label for="password">Comfirm Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            placeholder="Confirm password"
-          />
-
-          <button type="submit">Sign Up</button>
-          <p>alread have an account? <a href="login.html"> Login</a></p>
-        </form>
-      </section>
-    </main>
-    <footer>
-      <p>&copy; 2024 Centralized Educational Platform</p>
-    </footer>
-    <script src="../javascript files/script.js"></script>
+        </div>
+        <button type="submit">Signup</button>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </form>
+    </div>
+    <script src="../javascript files/signup.js"></script>
   </body>
 </html>
