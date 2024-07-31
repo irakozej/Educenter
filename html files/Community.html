@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css files/community.css" />
+    <link rel="icon" href="icon.png" />
+    <title>Community</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-left">
+          <a href="landing-page.html" class="home-icon"
+            ><img src="../images/Icon.jpg" alt="Home"
+          /></a>
+        </div>
+        <div class="navbar-right">
+          <a href="/html files/student pannel/index.html" class="nav-link"
+            >Home</a
+          >
+          <a
+            href="../html files/student pannel/student-resources.html"
+            class="nav-link"
+            >Resources</a
+          >
+          <a href="../html files/student pannel/assessments.html" class="nav-link"
+            >Assignments</a
+          >
+          <a href="../html files/student pannel/profile.html" class="nav-link"
+            >Profile</a
+          >
+          <a href="login.html" class="nav-link">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="new-post-section">
+        <h2>Create a New Post</h2>
+        <form id="newPostForm">
+          <textarea
+            id="postContent"
+            placeholder="Write something..."
+            required
+          ></textarea>
+          <input type="file" id="postImage" accept="image/*" />
+          <button type="submit">Post</button>
+        </form>
+      </section>
+
+      <section class="posts-section" id="postsSection">
+        <h2>Community Posts</h2>
+        <!-- Posts will be dynamically inserted here -->
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Community</p>
+    </footer>
+
+    <script src="../javascript files/community.js"></script>
+  </body>
+</html>
