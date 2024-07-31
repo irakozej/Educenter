@@ -11,7 +11,7 @@ header {
   color: white;
   padding: 1rem;
   text-align: center;
-  height:90px;
+  height: 90px;
 }
 
 nav ul {
@@ -67,7 +67,7 @@ input[type="password"] {
 }
 
 button {
-  background-color: #647a64;
+  background-color: #1f351f;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -77,10 +77,9 @@ button {
   border-radius: 5px;
   display: block;
   width: 100%;
-
 }
 button:hover {
-  background-color:#2b302d;
+  background-color: #214b34;
   text-size-adjust: 0.5rem;
 }
 
@@ -99,9 +98,7 @@ button:hover {
   form {
     padding: 1rem 0.5rem;
   }
-
 }
-
 
 ul {
   list-style-type: none;
@@ -123,6 +120,20 @@ h2 {
   text-align: center;
 }
 
-header h1{
+header h1 {
   margin-top: 7px;
+}
+
+#addAssignmentBtn {
+  background-color: #061318;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  width: 20%;
+  margin-left: 43%;
 }
