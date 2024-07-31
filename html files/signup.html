@@ -71,6 +71,10 @@
         width: 100%;
       }
 
+      #icon {
+        border-radius: 50%;
+      }
+
       .signup-container {
         max-width: 600px;
         margin: 40px auto;
@@ -131,7 +135,7 @@
         text-decoration: none;
       }
 
-        footer {
+      footer {
         text-align: center;
         padding: 10px;
         background-color: #333;
@@ -146,13 +150,17 @@
     <header>
       <nav class="navbar">
         <div class="nav-icon">
-          <a href="index.html">
-            <img src="../images/Icon.jpg" alt="Home Icon" />
+          <a href="landing-page.html">
+            <img src="../images/Icon.jpg" alt="Home Icon" id="icon" />
           </a>
         </div>
         <ul class="nav-links">
           <li><a href="community.html">Community</a></li>
-          <li><a href="/html files/student pannel/student-resources.html">Resources</a></li>
+          <li>
+            <a href="/html files/student pannel/student-resources.html"
+              >Resources</a
+            >
+          </li>
           <li><a href="login.html">Login</a></li>
         </ul>
       </nav>
@@ -183,8 +191,6 @@
 
         <button type="submit">Sign Up</button>
       </form>
-
-      
     </main>
 
     <footer>
