@@ -4,7 +4,108 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Educenter</title>
-    <link rel="stylesheet" href="../../css files/styles.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2em;
+      }
+
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: inline-block;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      nav a:hover {
+        background-color: #555;
+      }
+
+      main {
+        padding: 20px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      section {
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      section h2 {
+        color: #333;
+        margin-top: 0;
+      }
+
+      .privileges {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .privilege-card {
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: calc(50% - 40px);
+        min-width: 300px;
+        text-align: center;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .privilege-card:hover {
+        transform: scale(1.05);
+      }
+
+      .privilege-card h3 {
+        margin-top: 0;
+        color: #555;
+      }
+
+      .privilege-card p {
+        color: #777;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -28,10 +129,66 @@
           managing your academic activities.
         </p>
       </section>
+      <section class="privileges">
+        <div class="privilege-card">
+          <h3>Explore Courses</h3>
+          <p>
+            Browse through a wide range of courses and resources to enhance your
+            learning experience.
+          </p>
+          <button onclick="window.location.href='student-resources.html'">
+            View Resources
+          </button>
+        </div>
+        <div class="privilege-card">
+          <h3>Complete Assignments</h3>
+          <p>
+            Stay on top of your academic work by completing assignments on time.
+          </p>
+          <button onclick="window.location.href='assessments.html'">
+            View Assignments
+          </button>
+        </div>
+        <div class="privilege-card">
+          <h3>Community Interaction</h3>
+          <p>
+            Engage with peers, share knowledge, and stay connected through the
+            community.
+          </p>
+          <button onclick="window.location.href='../Community.html'">
+            Join Community
+          </button>
+        </div>
+        <div class="privilege-card">
+          <h3>Track Progress</h3>
+          <p>View your grades, track your progress, and stay motivated.</p>
+          <button onclick="window.location.href='dashboard.html'">
+            Track Journey
+          </button>
+        </div>
+      </section>
     </main>
     <footer>
       <p>&copy; 2024 Centralized Educational Platform</p>
     </footer>
-    <script src="../javascript files/script.js"></script>
+    <script>
+      // JavaScript for navbar and footer hide/show on scroll
+      let lastScrollTop = 0;
+      const navbar = document.querySelector("header");
+      const footer = document.querySelector("footer");
+
+      window.addEventListener("scroll", function () {
+        let scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+          navbar.style.top = "-70px"; // Hide navbar
+          footer.style.bottom = "-50px"; // Hide footer
+        } else {
+          navbar.style.top = "0"; // Show navbar
+          footer.style.bottom = "0"; // Show footer
+        }
+        lastScrollTop = scrollTop;
+      });
+    </script>
   </body>
 </html>
