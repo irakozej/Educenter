@@ -3,44 +3,287 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile - Centralized Educational Platform</title>
-    <link rel="stylesheet" href="../../css files/styles.css" />
+    <title>User Profile</title>
+    <style>
+      /* Inline CSS for Profile Page */
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: top 0.3s;
+      }
+
+      .nav-icon img {
+        width: 40px;
+        height: auto;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+        margin: 0;
+      }
+
+      .nav-links li {
+        position: relative;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        display: block;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .nav-links a:hover {
+        background-color: #555;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .profile-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+
+      .profile-container h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      .profile-picture-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-picture-container img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      .profile-picture-container input {
+        margin-top: 10px;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      textarea {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin: 0 0 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+      }
+
+      button:hover {
+        background-color: #555;
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        position: relative;
+        width: 100%;
+        bottom: 0;
+      }
+      #icon-picture {
+        border-radius: 50%;
+      }
+    </style>
   </head>
   <body>
     <header>
-      <h1>Educenter</h1>
-      <nav>
-        <ul>
-          <li><a href="admin-dashboard.html">Home</a></li>
-          <li><a href="resources.html">Courses</a></li>
-          <li><a href="assessments.html">Assignments</a></li>
+      <nav class="navbar">
+        <div class="nav-icon">
+          <a href="index.html">
+            <img
+              src="../../images/Icon.jpg"
+              alt="Home Icon"
+              id="icon-picture"
+            />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="student-resources.html">Courses</a></li>
+          <li><a href="assessments.html">Assessments</a></li>
           <li><a href="../Community.html">Community</a></li>
-          <li><a href="profile.html">Profile</a></li>
           <li><a href="../login.html">Logout</a></li>
         </ul>
       </nav>
     </header>
-    <main>
-      <section>
-        <h2>User Profile</h2>
-        <form id="profileForm">
-          <label for="username">Username or Email:</label>
+
+    <main class="profile-container">
+      <h2>User Profile</h2>
+      <form id="profileForm">
+        <div class="profile-picture-container">
+          <img id="profilePicturePreview" src="" alt="Profile Picture" />
           <input
-            type="text"
-            id="username"
-            name="username"
-            required
-            placeholder="{admin@Educenter.com}"
+            type="file"
+            id="profilePicture"
+            name="profilePicture"
+            accept="image/*"
           />
-          <label for="email">Password</label>
-          <input type="password" id="email" name="password" required />
-          <button type="submit">Update Profile</button>
-        </form>
-      </section>
+        </div>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" rows="4"></textarea>
+
+        <label for="password">New Password:</label>
+        <input type="password" id="password" name="password" />
+
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" />
+
+        <button type="submit">Update Profile</button>
+      </form>
     </main>
+
     <footer>
-      <p>&copy; 2024 Centralized Educational Platform</p>
+      <p>&copy; 2024 Student Assignments</p>
     </footer>
-    <script src="../javascript files/script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const user = JSON.parse(localStorage.getItem("user")) || {};
+
+        document.getElementById("firstName").value = user.firstName || "";
+        document.getElementById("lastName").value = user.lastName || "";
+        document.getElementById("email").value = user.email || "";
+        document.getElementById("bio").value = user.bio || "";
+        if (user.profilePicture) {
+          document.getElementById("profilePicturePreview").src =
+            user.profilePicture;
+        } else {
+          document.getElementById("profilePicturePreview").src =
+            "default-profile.png"; // Default profile image
+        }
+
+        document
+          .getElementById("profileForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const bio = document.getElementById("bio").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword =
+              document.getElementById("confirmPassword").value;
+
+            if (password && password !== confirmPassword) {
+              alert("Passwords do not match!");
+              return;
+            }
+
+            user.firstName = firstName;
+            user.lastName = lastName;
+            user.email = email;
+            user.bio = bio;
+
+            if (password) {
+              user.password = password;
+            }
+
+            const profilePictureInput =
+              document.getElementById("profilePicture");
+            if (profilePictureInput.files && profilePictureInput.files[0]) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                user.profilePicture = e.target.result;
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Profile updated successfully!");
+                window.location.reload();
+              };
+              reader.readAsDataURL(profilePictureInput.files[0]);
+            } else {
+              localStorage.setItem("user", JSON.stringify(user));
+              alert("Profile updated successfully!");
+              window.location.reload();
+            }
+          });
+
+        document
+          .getElementById("profilePicture")
+          .addEventListener("change", function () {
+            const profilePictureInput = this;
+            if (profilePictureInput.files && profilePictureInput.files[0]) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                document.getElementById("profilePicturePreview").src =
+                  e.target.result;
+              };
+              reader.readAsDataURL(profilePictureInput.files[0]);
+            }
+          });
+      });
+    </script>
   </body>
 </html>

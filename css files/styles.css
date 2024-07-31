@@ -17,6 +17,7 @@ header {
 nav ul {
   list-style-type: none;
   padding: 0;
+  
 }
 
 nav ul li {
@@ -136,4 +137,38 @@ header h1 {
   display: block;
   width: 20%;
   margin-left: 43%;
+}
+#addResourceBtn {
+  background-color: #061318;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  display: block;
+  width: 20%;
+  margin-left: 43%;
+}
+
+
+.profile-picture-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+#profilePicture {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
