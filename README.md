@@ -1,6 +1,6 @@
 ## Centralized Educational Platform
 
-___ 🚀 Project Overview ___
+ ###🚀 Project Overview
 
 The Centralized Educational Platform aims to revolutionize the way educational resources and assignments are managed and accessed. This platform provides an integrated solution for educators and students, offering easy resource management, seamless assignment tracking, and interactive learning experiences.
 
