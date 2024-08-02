@@ -44,7 +44,6 @@ You can use the Live Server extension in VSCode or simply open the file in your 
 ### 📂 Project Structure
 
 Educenter/
-|
 ├── css files/
 │   ├── styles.css
 │   └── landing-page.css
@@ -69,6 +68,7 @@ Educenter/
 ├── index.html
 ├── login.html
 └── signup.html
+
 
 
 ### 📝 Contribution Guidelines
