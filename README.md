@@ -1,6 +1,6 @@
 ## Centralized Educational Platform
 
-### 🚀 Project Overview
+*** ### 🚀 Project Overview
 
 The Centralized Educational Platform aims to revolutionize the way educational resources and assignments are managed and accessed. This platform provides an integrated solution for educators and students, offering easy resource management, seamless assignment tracking, and interactive learning experiences.
 
@@ -47,7 +47,7 @@ You can use the Live Server extension in VSCode or simply open the file in your 
 #### 📂 Project Structure
 
 Educenter/
-│
+|
 ├── css files/
 │   ├── styles.css
 │   └── landing-page.css
@@ -87,6 +87,6 @@ Submit a pull request to the main repository.
 
 We welcome contributions of all kinds. Whether you're fixing bugs, improving the code, or adding new features, your input is valuable!
 
-####📧 Contacts:
+#### 📧 Contacts:
 For any questions or inquiries, feel free to contact us at jeaniakoze68@gmail.com
 
