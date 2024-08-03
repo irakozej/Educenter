@@ -22,15 +22,15 @@ HTML5
 CSS3 (Inline and External Styles)
 JavaScript (ES6)
 
- ```#### 💻 Getting Started
+#### 💻 Getting Started
 Follow these steps to clone and run this project locally: ```
 
- ```#### Prerequisites
+#### Prerequisites
 Git: Ensure Git is installed on your system. Download Git
 Code Editor: Use any code editor like Visual Studio Code, Sublime Text, or Atom.
 Installation
-Clone the Repository:
-https://github.com/irakozej/Educenter ```
+```Clone the Repository:
+https://github.com/irakozej/Educenter```
 
 #### Navigate to the Project Directory:
 cd Educenter
